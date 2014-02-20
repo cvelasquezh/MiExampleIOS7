@@ -19,30 +19,30 @@ static ServiceYambal *sharedMyManager = nil;
         if(sharedMyManager==nil)
         {
             sharedMyManager= [ServiceYambal new];
+            AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+            sharedMyManager.managedObjectContext = delegate.managedObjectContext;
         }
     }
     return sharedMyManager;
 }
 
-+(BOOL)saveClientInStoreLocal:(Cliente *)cliente
+-(BOOL)saveClientInStoreLocal:(Cliente *)cliente
 {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    appDelegate.managedObjectContext;
     
     return NO;
 }
-+(NSArray *)getAllClients
+-(NSArray *)getAllClients
 {
     NSArray *arrayClients;
     
     return  arrayClients;
 }
-+(NSArray *)getClientByName:(NSString *)name{
+-(NSArray *)getClientByName:(NSString *)name{
     NSArray *arrayClients;
     
     return arrayClients;
 }
-+(Cliente *)getClientById:(NSString *)codigo
+-(Cliente *)getClientById:(NSString *)codigo
 {
     Cliente *client;
     
