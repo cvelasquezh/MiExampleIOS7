@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "Cliente.h"
-
+#import "AppDelegate.h"
 @interface ServiceYambal : NSObject
 
 @property(nonatomic,retain) NSManagedObjectContext *managedObjectContext;
 
 
 
++(ServiceYambal *)getInstance;
 
 -(BOOL)saveClientInStoreLocal:(Cliente *)cliente;
 -(NSArray *)getAllClients;
