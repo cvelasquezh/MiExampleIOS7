@@ -30,12 +30,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    AppDelegate *delegate = [[UIApplication sharedApplication]delegate];
-    self.mContext = delegate.managedObjectContext;
     
     
     
-    // Do any additional setup after loading the view from its nib.
 }
 
 
@@ -52,17 +49,24 @@
     NSString *apellidos = txtApellido.text;
     NSString *codigo = txtCodigo.text;
     
+    //validando datos vacios
     if ([nombre isEqualToString:@""] || [apellidos isEqualToString:@""] || [codigo isEqualToString:@""]) {
         UIAlertView *alertview = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Debe llenar todos los campos" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
         [alertview show];
         return;
     }
+    
+    //enviando datos
     Cliente *cliente = [Cliente new];
     [cliente setNombre:nombre];
     [cliente setApellido:apellidos];
     [cliente setIdCodigo:codigo];
 
-    [ServiceYambal saveClientInStoreLocal:cliente];
+    BOOL exit= [[ServiceYambal getInstance]saveClientInStoreLocal:cliente];
+    
+    
+    
+    
    
 
 }
